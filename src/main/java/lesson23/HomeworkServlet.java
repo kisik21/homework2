@@ -27,23 +27,18 @@ public class HomeworkServlet extends HttpServlet {
     private final String PATH = "C:\\Books\\";
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        path = req.getServletPath();
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         if (path.equals("/load-book")) {
             try {
-                Part file = req.getPart("file");
-                String filename = getFilename(file);
-                InputStream filecontent = file.getInputStream();
-                // ... Do your file saving job here.
-
-                resp.setContentType("text/plain");
-                resp.setCharacterEncoding("UTF-8");
-                resp.getWriter().write("File " + filename + " successfully uploaded");
-
-            } catch (IOException e) {
-                resp.getWriter().print("error" + e.getMessage());
+                Part filePart = request.getPart("file");
+                String name = getFilename(filePart);
+                filePart.write("D:\\" + name);
+                response.getWriter().print("The file uploaded successfully :)");
+            } catch (Exception e) {
+                response.getWriter().print("Something wrong :(");
             }
         }
+
     }
 
     private static String getFilename(Part part) {
