@@ -12,7 +12,7 @@ import java.io.IOException;
 public class Filter extends HttpFilter {
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
-        System.out.println("filter");
-        chain.doFilter(req,res);
+//        System.out.println("filter");
+//        chain.doFilter(req,res);
     }
 }

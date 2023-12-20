@@ -14,11 +14,11 @@ public class Practice extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         try {
-            getServletContext().getRequestDispatcher("/verse.html").forward(req, resp);
+            req.getRequestDispatcher("/verse.html").forward(req, resp);
 //            RequestDispatcher dispatcher = req.getRequestDispatcher("/verse.html");
 //            dispatcher.forward(req, resp);
         }
-        catch (ServletException e) {
+        catch (ServletException | IllegalStateException e) {
             throw new RuntimeException(e);
         }
 
