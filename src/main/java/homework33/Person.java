@@ -25,6 +25,10 @@ public class Person {
         return this.address;
     }
 
+    public int getBalance () {
+        return this.age;
+    }
+
     public void setName (String newName) {
         this.name=newName;
     }
@@ -35,6 +39,7 @@ public class Person {
                 + "Name='" + name + '\''
                 + ", Age=" + age
                 + ", Address=" + address
+                + ", Balance=" + balance
                 + '}';
     }
     @Override
@@ -57,9 +62,15 @@ public class Person {
         if (getAge() != person.getAge()) {
             return false;
         }
-        return getName() != null
-                ? getName().equals(person.getName())
-                : person.getName() == null;
+
+        if (!getName().equals(person.getName())) {
+            return false;
+        }
+
+        if (getBalance() != person.getBalance()) {
+            return false;
+        }
+        return getAddress().equals(person.getAddress());
 
     }
 }
